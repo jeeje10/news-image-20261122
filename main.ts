@@ -1,7 +1,6 @@
-// Entry program for the make.fun news-image-20261122 bounty (v2).
+// Entry program for the make.fun news-image-20261122 bounty.
 // Copies the pre-built front-page image (entry.png, 1024x1024, under 1 MiB)
 // from this repository to the output directory.
-// v2: 36 dated stories, 9 regions, one pictogram per card.
 import { copyFileSync, mkdirSync, statSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -9,7 +8,6 @@ import { fileURLToPath } from "node:url";
 const here = dirname(fileURLToPath(import.meta.url));
 const src = join(here, "entry.png");
 // Fail fast on an empty or oversized image instead of copying a bad entry.
-// v2 image verified 378,855 bytes, 1024x1024, 36 stories.
 const size = statSync(src).size;
 if (size === 0 || size > 1048576) {
   throw new Error(`entry.png is ${size} bytes (must be 1..1048576)`);
